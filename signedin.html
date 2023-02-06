@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-[600px] bg-white">
+      <div class="py-6 flex flex-col justify-center h-screen">
+        <p class="mb-20 text-base font-bold text-[#07074D] text-4xl">RIC Language Center Attendance</p>
+
+        <p class="mb-20 text-base font-bold text-green-400 text-2xl text-center">You Are Already Signed In</p>
+
+        <div class="mb-10">
+          <?var url = getUrl();?>
+          <input type="hidden" value="<?= url ?>" id="url" />
+          <input type="hidden" value="<?= sid ?>" id="sid" />
+          <input type="hidden" value="<?= passcode ?>" id="passcode" />
+          <button
+              id="checkout"
+              class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            >
+              Check Out
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("checkout").addEventListener("click", checkOut);
+    function checkOut() {
+      var url = document.getElementById("url").value;
+      var link = document.createElement('a');
+      link.href = url+"?sid=" + document.getElementById("sid").value + "&passcode=" + document.getElementById("passcode").value + "&page=signedin";
+      link.id = 'linkURL';
+      document.body.appendChild(link);
+      document.getElementById("linkURL").click();
+    }
+  </script>
+</body>
+
+</html>

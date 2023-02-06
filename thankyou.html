@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-[600px] bg-white">
+      <div class="py-6 flex flex-col justify-center h-screen">
+
+        <p class="mb-20 text-base font-bold text-green-500 text-4xl text-center">Thank You</p>
+
+        <div class="mb-10">
+          <?var url = getUrl();?>
+          <input type="hidden" value="<?= url ?>" id="url" />
+          <button
+              id="backhome"
+              class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            >
+              Go To Home Page
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("backhome").addEventListener("click", backHome);
+    function backHome() {
+      var url = document.getElementById("url").value;
+      var link = document.createElement('a');
+      link.href = url;
+      link.id = 'linkURL';
+      document.body.appendChild(link);
+      document.getElementById("linkURL").click();
+    }
+  </script>
+</body>
+
+</html>
