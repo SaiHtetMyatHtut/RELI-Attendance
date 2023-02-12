@@ -1,67 +1,107 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <base target="_top" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<head>
-  <base target="_top" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  <body class="bg-[#F9F5EB]">
+    <div class="absolute w-screen h-screen">
+      <div class="absolute bottom-0 right-0">
+        <p class="pl-2 opacity-50 text-xs text-[#07074D]">Developed by</p>
+        <p class="pl-2 opacity-80 text-[#07074D]">Sai Htet Myat Htut</p>
+        <img
+          class="w-[150px] aspect-auto"
+          src="https://drive.google.com/uc?id=1zdW70dWZA9VHf4U1WRIVIlqpZSZKM8Fd"
+          alt=""
+          srcset=""
+        />
+      </div>
 
-<body>
-  <div class="flex items-center justify-center">
-    <div class="mx-auto w-full max-w-[600px] bg-white">
-      <div class="py-6 flex flex-col justify-center h-screen">
-        <p class="mb-20 text-base font-bold text-[#07074D] text-4xl">
-          RIC Language Center Attendance
-        </p>
+      <img
+        class="w-[900px] h-screen object-cover opacity-20 -ml-32 overflow-hidden"
+        src="https://drive.google.com/uc?export=view&id=1zdW70dWZA9VHf4U1WRIVIlqpZSZKM8Fd"
+        alt=""
+        srcset=""
+      />
+    </div>
 
-        <!-- Text Field -->
-        <div class="mb-10">
-          <label class="mb-3 block text-base font-medium text-[#07074D]">
-              Enter Your Student ID:
-            </label>
-          <input
-              type="number"
-              id="sid"
-              placeholder="6510072"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
-        </div>
+    <div class="absolute w-screen h-screen">
+      <div class="flex items-center justify-center">
+        <div class="mx-auto w-full max-w-[600px] bg-transparent">
+          <div class="flex flex-col justify-center h-screen">
+            <div class="flex flex-row justify-center">
+              <img
+                class="w-[200px] overflow-hidden aspect-auto top-0 right-0"
+                src="https://drive.google.com/uc?export=view&id=1ZfRVIUn0GcHzdBPilBZenT9fYL_1Et3C"
+                alt=""
+                srcset=""
+              />
+            </div>
 
-        <!-- Text Field -->
-        <div class="mb-10">
-          <label class="mb-3 block text-base font-medium text-[#07074D]">
-              Passcode :
-            </label>
-          <input
-              type="text"
-              id="passcode"
-              placeholder="Ask Mentor"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"/>
-        </div>
+            <p
+              class="mb-10 text-base text-center font-bold text-[#07074D] text-4xl"
+            >
+              Attendance Record
+            </p>
 
-        <div class="mb-10">
-          <?var url = getUrl();?>
-          <input type="hidden" value="<?= url ?>" id="url" />
-          <button
-              id="check"
-              class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-              Check
-            </button>
+            <!-- Text Field -->
+            <div class="mb-5">
+              <label class="mb-3 block text-base font-medium text-[#07074D]">
+                Enter Your Student ID:
+              </label>
+              <input
+                type="number"
+                id="sid"
+                placeholder="xxxxxxx"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+
+            <!-- Text Field -->
+            <div class="mb-10">
+              <label class="mb-3 block text-base font-medium text-[#07074D]">
+                Passcode :
+              </label>
+              <input
+                type="password"
+                id="passcode"
+                placeholder="Ask Mentor"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+
+            <div class="mb-10">
+              <?var url = getUrl();?>
+              <input type="hidden" value="<?= url ?>" id="url" />
+              <button
+                id="check"
+                class="hover:shadow-form w-full rounded-md bg-[#07074D] hover:bg-[#271C66] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+              >
+                Check
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    document.getElementById("check").addEventListener("click", checkData);
-    function checkData() {
-      var url = document.getElementById("url").value;
-      var link = document.createElement('a');
-      link.href = url+"?sid=" + document.getElementById("sid").value + "&passcode=" + document.getElementById("passcode").value + "&page=index";
-      link.id = 'linkURL';
-      document.body.appendChild(link);
-      document.getElementById("linkURL").click();
-    }
-  </script>
-</body>
 
+    <script>
+      document.getElementById("check").addEventListener("click", checkData);
+      function checkData() {
+        var url = document.getElementById("url").value;
+        var link = document.createElement("a");
+        link.href =
+          url +
+          "?sid=" +
+          document.getElementById("sid").value +
+          "&passcode=" +
+          document.getElementById("passcode").value +
+          "&instruction=CheckIn";
+        link.id = "linkURL";
+        document.body.appendChild(link);
+        document.getElementById("linkURL").click();
+      }
+    </script>
+  </body>
 </html>
